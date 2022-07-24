@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const SearchStatus = ({ length }) => {
   const getBadgeClasses = () => {
@@ -7,27 +8,33 @@ const SearchStatus = ({ length }) => {
     return classes;
   };
   const lastOne = Number(length.toString().slice(-1));
-  if (length > 4 && length < 15)
+  if (length > 4 && length < 15) {
     return (
       <h1 className={getBadgeClasses()}>
         {length} человек тусанет с тобой сегодня
       </h1>
     );
-  if ([2, 3, 4].indexOf(lastOne) >= 0)
+  }
+  if ([2, 3, 4].indexOf(lastOne) >= 0) {
     return (
       <h1 className={getBadgeClasses()}>
         {length} человека тусанут с тобой сегодня
       </h1>
     );
-  if (lastOne === 1)
+  }
+  if (lastOne === 1) {
     return (
       <h1 className={getBadgeClasses()}>
         {length} человек тусанет с тобой сегодня
       </h1>
     );
+  }
   return (
     <h1 className={getBadgeClasses()}>Никто не тусанет с тобой сегодня</h1>
   );
 };
 
+SearchStatus.propTypes = {
+  length: PropTypes.number.isRequired
+};
 export default SearchStatus;
