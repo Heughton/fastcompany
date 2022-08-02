@@ -7,8 +7,8 @@ import GroupList from "./groupList";
 import api from "../api";
 import SearchStatus from "./searchStatus";
 
-const Users = ({ allUsers, ...rest }) => {
-  const [professions, setProfession] = useState(api.professions.fetchAll);
+const Users = ({ users: allUsers, ...rest }) => {
+  const [professions, setProfession] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedProf, setSelectedProf] = useState();
   const pageSize = 4;
@@ -38,6 +38,7 @@ const Users = ({ allUsers, ...rest }) => {
   const clearFilter = () => {
     setSelectedProf();
   };
+
   return (
     <div className="d-flex">
       {professions && (
@@ -88,6 +89,6 @@ const Users = ({ allUsers, ...rest }) => {
 };
 
 Users.propTypes = {
-  allUsers: PropTypes.array.isRequired
+  users: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
 };
 export default Users;
