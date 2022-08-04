@@ -7,7 +7,7 @@ import GroupList from "./groupList";
 import api from "../api";
 import SearchStatus from "./searchStatus";
 
-const Users = ({ users: allUsers, ...rest }) => {
+const Users = ({ allUsers, ...rest }) => {
   const [professions, setProfession] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedProf, setSelectedProf] = useState();
@@ -30,8 +30,12 @@ const Users = ({ users: allUsers, ...rest }) => {
   };
 
   const filteredUsers = selectedProf
-    ? allUsers.filter((user) => user.profession === selectedProf)
+    ? allUsers.filter(
+        (user) =>
+          JSON.stringify(user.profession) === JSON.stringify(selectedProf)
+      )
     : allUsers;
+
   const count = filteredUsers.length;
   const userCrop = paginate(filteredUsers, currentPage, pageSize);
 
@@ -89,6 +93,6 @@ const Users = ({ users: allUsers, ...rest }) => {
 };
 
 Users.propTypes = {
-  users: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+  allUsers: PropTypes.array.isRequired
 };
 export default Users;

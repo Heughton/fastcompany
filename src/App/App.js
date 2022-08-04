@@ -6,8 +6,8 @@ import api from "../api";
 const App = () => {
   const [users, setUsers] = useState();
   useEffect(() => {
-    api.users.fetchAll().then((data) => setUsers(data), []);
-  });
+    api.users.fetchAll().then((data) => setUsers(data));
+  }, []);
   const handleDelete = (userId) => {
     setUsers((prevState) => prevState.filter((user) => user._id !== userId));
   };
@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <>
-      {users.length !== 0 && (
+      {users && (
         <Users
           onDelete={handleDelete}
           onToggleBookmark={handleToggleBookmark}
