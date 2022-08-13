@@ -110,6 +110,6 @@ const Users = () => {
 };
 
 Users.propTypes = {
-  users: PropTypes.array.isRequired
+  users: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 };
 export default Users;

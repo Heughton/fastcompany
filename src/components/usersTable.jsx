@@ -11,8 +11,7 @@ const UsersTable = ({
   onSort,
   selectedSort,
   onToggleBookmark,
-  onDelete,
-  ...rest
+  onDelete
 }) => {
   const columns = {
     name: { path: "name", name: "Имя" },
@@ -20,9 +19,9 @@ const UsersTable = ({
       name: "Качества",
       component: (user) => <QualitiesList qualities={user.qualities} />
     },
-    professions: { path: "professions.name", name: "Профессия" },
+    professions: { path: "profession.name", name: "Профессия" },
     completedMeetings: { path: "completedMeetings", name: "Встретился, раз" },
-    rate: { iter: "rate", name: "Оценка" },
+    rate: { path: "rate", name: "Оценка" },
     bookmark: {
       path: "bookmark",
       name: "Избранное",
