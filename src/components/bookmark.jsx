@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Bookmark = ({ status }) => {
+const Bookmark = ({ status, ...rest }) => {
   const getClassBookmark = () => {
     let classes = "bi bi-bookmark";
     classes += status ? "-fill" : "";
     return classes;
   };
   return (
-    <button className="btn">
+    <button className="btn" {...rest}>
       <i className={getClassBookmark()}></i>
     </button>
   );
